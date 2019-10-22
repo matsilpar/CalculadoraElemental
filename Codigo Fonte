@@ -1,0 +1,115 @@
+import os
+
+def mult (x, y):
+    new = 0
+    cont = 0
+    if (x != 0 and y!= 0):
+        while (cont < y):
+            new = new + x
+            cont = cont + 1
+    return new
+
+def div (x, y):
+    cont = 0
+    if (y > x):
+        return (0, x)
+    else:
+        new = y
+        while (new <= x):
+            cont = cont + 1
+            new = new + y
+        resto = x - mult(cont, y)
+        return (resto, cont)
+
+def expo (x, y):
+    new = 1
+    while (y > 0):
+        new = mult(new, x)
+        y = y - 1
+    return new
+
+def raiz(x, n):
+    aux = 0
+    nz = 1
+    z = 1
+    while (z <= x):
+        aux = 0
+        nz = 1
+        while (aux < n):
+            nz = mult(z, z)
+            aux = aux + 1        
+        if (nz == x):
+            return z
+        else:
+            z = z + 1
+        if (z == x):
+            if (nz != x):
+                return False
+def log (b, a):
+    aux = 1
+    while (aux < a):
+        if (expo(b, aux) == a):
+            return aux
+        else:
+            aux = aux + 1
+def fat (a):
+    cont = a - 1
+    while (cont > 1):
+        a = mult(a, cont)
+        cont = cont - 1
+    return a
+
+def dec (a, b):
+    lista = []
+    newlista = []
+    cont = 0
+    aux = [0, a]
+    while (aux[1] >= b):
+        aux = div(aux[1], b)
+        lista.append(aux[0])
+        cont = cont + 1
+    newlista.append(aux[1])
+    cont2 = cont
+    for i in range (cont):
+        newlista.append (lista[cont2-1])
+        cont2 = cont2 - 1
+    return newlista
+
+
+
+
+k = 1
+while (k == 1):
+    op = input("Digite a operação que você quer fazer ...\n\t1. Multiplicação\n\t2. Divisão\n\t3. Potenciação\n\t4. Radiciação\n\t5. Logaritmo\n\t6. Fatorial\n\t7. Mudança de base\n\t8. Sair\n\t")
+    if (op == 'Multiplicação' or op == '1'):
+        x = int(input("Digite o X: "))
+        y = int(input("Digite o Y: "))
+        print ("Multiplicação de {} e {} é: {}\n\n" .format (x, y, mult(x, y)))
+    elif (op == 'Divisão' or op == '2'):
+        x = int(input("Digite o dividendo: "))
+        y = int(input("Digite o denominador: "))
+        d = div (x, y)
+        print("Resto da divisão é: {}\nO quociente da divisão é: {}\n\n" .format(d[0], d[1]))
+    elif (op == 'Potenciação' or op == '3'):
+        x = int(input("Digite a base: "))
+        y = int(input("Digite o expoente: "))
+        print ("Multiplicação de {} e {} é: {}\n\n" .format (x, y, expo(x, y)))
+    elif (op == 'Radiciação' or op == '4'):
+        x = int(input("Digite o radicando: "))
+        n = int(input("Digite o indice: "))
+        print ("A raiz {}º de {} é: {}\n\n" .format (n, x, raiz(x, n)))
+    elif (op == 'Logaritmo' or op == '5'):
+        b = int(input("Digite a base: "))
+        a = int(input("DIgite o Logaritmando: "))
+        print ("O logaritmo de {} na base {} é: {}" .format(a, b, log(b, a)))
+    elif (op == 'Fatorial' or op == '6'):
+        a = int(input("Digite o numero: "))
+        print("O fatorial de {} é: {}".format(a, fat(a)))
+    elif (op == 'Mudança' or op == '7'):
+        a = int(input("Digite o numero para mudar: "))
+        b = int(input("Digite a base: "))
+        print(dec(a, b))
+    elif (op == "8" or op == "Sair"):
+        k == 0
+    os.system("pause")
+    os.system("cls")
