@@ -9,6 +9,7 @@ def mult (x, y):
             cont = cont + 1
     return new
 
+
 def div (x, y):
     cont = 0
     if (y > x):
@@ -21,12 +22,14 @@ def div (x, y):
         resto = x - mult(cont, y)
         return (resto, cont)
 
+
 def expo (x, y):
     new = 1
     while (y > 0):
         new = mult(new, x)
         y = y - 1
     return new
+
 
 def raiz(x, n):
     aux = 0
@@ -45,6 +48,8 @@ def raiz(x, n):
         if (z == x):
             if (nz != x):
                 return False
+                
+                
 def log (b, a):
     aux = 1
     while (aux < a):
@@ -52,12 +57,15 @@ def log (b, a):
             return aux
         else:
             aux = aux + 1
+            
+            
 def fat (a):
     cont = a - 1
     while (cont > 1):
         a = mult(a, cont)
         cont = cont - 1
     return a
+
 
 def dec (a, b):
     lista = []
